@@ -1,5 +1,3 @@
-#include <iostream>
-
 // ---- function overload resolution ----
 // 1-) başarılı
 // 2-) başarısız
@@ -18,8 +16,9 @@ void foo(long);
 void foo(Color);
 
 // ---- 2. viable function ----
-// - eğer fonksiyon tek başına bu argümanla bu fonksiyona yapılan çağrı legal olur mu? ==> foo(x)
-// - viable functions: 
+// - eğer fonksiyon tek başına bu argümanla bu fonksiyona yapılan çağrı legal
+// olur mu? ==> foo(x)
+// - viable functions:
 //    void foo(int);
 //    void foo(double);
 //    void foo(long);
@@ -29,7 +28,7 @@ int main() {
 
   int x = 10;
 
-  foo(x); // for this function call there are 6 candidate function  
+  foo(x); // for this function call there are 6 candidate function
 
   return 0;
 }
