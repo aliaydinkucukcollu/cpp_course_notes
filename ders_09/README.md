@@ -9,3 +9,4 @@
 - extern C
 - name mangling (name decoration)
 - predefined symbolic constants
+- classes
