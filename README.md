@@ -14,12 +14,22 @@ Necati Ergin, Mart-2026 C++ Kursu Ders Notları.
 - [X] Ders-8  (03 Nisan 2026 - Cuma)
 - [X] Ders-9  (07 Nisan 2026 - Salı)
 - [X] Ders-10 (09 Nisan 2026 - Perşembe)
-- [ ] Ders-11 (10 Nisan 2026 - Cuma)
+- [X] Ders-11 (10 Nisan 2026 - Cuma)
 - [ ] Ders-12 (14 Nisan 2026 - Salı)
 - [ ] Ders-13 (17 Nisan 2026 - Cuma)
 - [ ] Ders-14 (21 Nisan 2026 - Salı)
 - [ ] Ders-15 (23 Nisan 2026 - Perşembe)
 - [ ] Ders-16 (24 Nisan 2026 - Cuma)
+- [ ] Ders-17 (28 Nisan 2026 - Salı)
+- [ ] Ders-18 (30 Nisan 2026 - Perşembe)
+- [ ] Ders-19 (01 Mayıs 2026 - Cuma)
+- [ ] Ders-20 (05 Mayıs 2026 - Salı)
+- [ ] Ders-21 (07 Mayıs 2026 - Perşembe)
+- [ ] Ders-22 (12 Mayıs 2026 - Salı)
+- [ ] Ders-23 (14 Mayıs 2026 - Perşembe)
+- [ ] Ders-24 (15 Mayıs 2026 - Cuma)
+- [ ] Ders-25 (21 Mayıs 2026 - Perşembe)
+- [ ] Ders-26 (22 Mayıs 2026 - Cuma)
 
 ## Kod Derleme
 
