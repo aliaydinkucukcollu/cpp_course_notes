@@ -17,4 +17,10 @@
       - implicitly decleared defaulted
       - implicitly decleared deleted
     - copy constructor
+    - C and C++ value categories
+    - copy constructor ne zaman çağrılır
+    - value semantics
+    - derleyicinin yazdığı copy constructor (implicity decleared)
+    - copy constructor initializer list
+    - neden copy constructorı kendimiz tanımlayalım?
     
