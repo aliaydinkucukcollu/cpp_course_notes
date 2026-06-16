@@ -2,6 +2,12 @@
 // -> L value
 // -> R value
 
+//         expression
+//         /        \
+//     glvalue      rvalue
+//     /     \     /     \
+//  lvalue   xvalue   prvalue
+
 // value category in C++
 //
 // primary value categories
@@ -15,7 +21,6 @@
 //
 // Dikkat bir değişkenin value categorisi olmaz.
 // value category bir ifadeyi niteler.
-//
 
 class Myclass {};
 
