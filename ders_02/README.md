@@ -500,6 +500,146 @@ static int y = 45; // statik ömürlü
 - **register** C dilinde bir keyworddür. ama tıpkı auto gibi kullanımdan düşmüş durumda.
 
 ---
+## C++ Konuları
+### Değişkenlere İlk Değer Verme
+
+- assignment
+- initialization
+
+```cpp
+// initialization
+int x = 10;
+
+// assignment
+x = 45;
+```
+
+- ilk değer verme
+```c
+// in C
+// iki seçenek var
+int x = 23;
+
+int x;
+
+// agregate initialization
+int ar[] = {2,4,5};
+```
+
+C-like C++ => kötü bir durum.
+C gibi C++ programlamak C++ semantiğine uygun değil.
+
+```cpp
+// in C++
+
+// default initialization
+// -> tercih edilmiyor
+int x;
+
+// HINT => değişkeni nerede ilk olarak kullancaksak orada tanımla ve onu her zaman initialize et!
+```
+- memory leakage
+
+- scope leakage
+    - kapsam sızıntısı
+    - block scope
+        - ismin kullanım alanı
+    - bir isim fiilen kullanıldığı kod alanı dışında kullanılma potansiyeline sahipse buna **scope leakage** denir.
+    - neden kötü:
+        - yanlış bilgi verir
+            - geliştirici ismin başka yerde kullanılacağını düşünür.
+        - yanlışlıkla kullanılma ihtimali.
+        - isim eğer sınıflar türünden değişkenlere ilişkin ise memory ve diğer kaynaklar gereksiz yer işgal edilir.
+    - çözümler:
+        - nested block
+        - C++ dilinde C'de olmayan scope leakage'ı engelleyen farklı araçlar var.
+            - Örneğin:
+                - if with initializer(C++17)
+```cpp
+int bar();
+
+void foo(void)
+{
+    int x = bar();
+    if(x > 0)
+    {
+        // use x
+    }
+
+    // x may use => scope leakage
+}
+
+void buz()
+{
+    // allocates dynamic memory
+    std::string str(100'000, 'a');
+    // statements
+    // ...
+}
+```
+
+- ilk değer verme devam
+```cpp
+// in C++
+
+// default initialization
+int x;
+
+// x -> garbage value, indetermined value
+
+static int x; // x = 0, garanti altında
+
+// copy initialization
+int x = 10;
+
+// direct initialization
+int x(10);
+
+// After Modern C++
+
+// brace initialization
+// uniform initialization
+// direct-list initialization
+int x{36};
+
+// value initialization
+int x{};
+```
+
+- narrowing conversion
+    - daraltıcı dönüşüm
+```cpp
+double dval = 3.4;
+int ival = dval; // narrowing conversion, ival = 3
+
+int x{dval}; // ERROR
+```
+
+- neden dile "uniform initialization" eklendi?
+    - uniform
+        - her türde geçerli
+    - narrowing conversion -> ERROR
+    - Most Vexing Parse
+        - değişken tanımlamak isterken
+        fonksiyon prototipi oluşturuluyor.
+    ```cpp
+    class Timer{
+    public:
+        Timer(){}
+    };
+
+    class Engine{
+        public:
+            Engine(Timer t){}
+            void run(){
+                std::cout << "Engine running!\n";
+            }
+    };
+
+    Engine myEngine(Timer()); // most vexing parse
+    ```
+
+---
 
 ## Ek kaynaklar
 
@@ -528,3 +668,8 @@ static int y = 45; // statik ömürlü
     - designated initializer
 - [ ] puts in C
 - [ ] putchar
+- [ ] C-like C++
+- [ ] scope leakage
+- [ ] memory leakage
+- [ ] static keyword
+- [ ] extern keyword

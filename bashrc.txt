@@ -1,0 +1,105 @@
+# =========================
+# C and C++ Shortcuts
+# =========================
+
+# Create a new C++ file
+newcpp() {
+    local timestamp
+    local filename
+
+    timestamp=$(date '+%Y%m%d_%H%M%S')
+
+    if [ -n "$1" ]; then
+        filename="${timestamp}_$1.cpp"
+    else
+        filename="${timestamp}.cpp"
+    fi
+
+    cat > "$filename" <<'EOF'
+#include <iostream>
+
+int main()
+{
+
+    return 0;
+}
+EOF
+
+    echo "Created: $filename"
+}
+
+
+# Create a new C file
+newc() {
+    local timestamp
+    local filename
+
+    timestamp=$(date '+%Y%m%d_%H%M%S')
+
+    if [ -n "$1" ]; then
+        filename="${timestamp}_$1.c"
+    else
+        filename="${timestamp}.c"
+    fi
+
+    cat > "$filename" <<'EOF'
+#include <stdio.h>
+
+int main()
+{
+
+    return 0;
+}
+EOF
+
+    echo "Created: $filename"
+}
+
+
+# Compile and run the newest C or C++ file
+runlatest() {
+    local file
+    local executable="program"
+
+    # Find the newest .c or .cpp file
+    file=$(find . -maxdepth 1 -type f \( -name "*.c" -o -name "*.cpp" \) \
+        -printf '%T@ %p\n' 2>/dev/null |
+        sort -nr |
+        head -n 1 |
+        cut -d' ' -f2-)
+
+    if [ -z "$file" ]; then
+        echo "No .c or .cpp files found."
+        return 1
+    fi
+
+    echo "Running: $file"
+
+    case "$file" in
+        *.cpp)
+            clang++ \
+                -std=c++20 \
+                "$file" \
+                -o "$executable"
+            ;;
+
+        *.c)
+            clang \
+                -std=c17 \
+                "$file" \
+                -o "$executable"
+            ;;
+
+        *)
+            echo "Unsupported source file: $file"
+            return 1
+            ;;
+    esac
+
+    if [ $? -eq 0 ]; then
+        "./$executable"
+    else
+        echo "Compilation failed."
+        return 1
+    fi
+}
